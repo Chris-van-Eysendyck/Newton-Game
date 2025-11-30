@@ -27,7 +27,7 @@ export class Level1 extends Phaser.Scene {
         }
         // Load the math problem background
         if (!this.textures.exists('mathBg')) {
-            this.load.image('mathBg', 'assets/Newton menu background small.jpg');
+            this.load.image('mathBg', 'assets/Newton_menu_background_small.jpg');
         }
         console.log('Level1 preload complete');
     }
@@ -354,10 +354,10 @@ export class Level1 extends Phaser.Scene {
         // Big celebration message
         const victoryText = this.add.text(640, 360, 'LEVEL VOLTOOID!\n🌟🌟🌟', {
             fontSize: '64px',
-            color: '#ffff00',
+            color: '#6fdd86',
             fontStyle: 'bold',
             stroke: '#ff00ff',
-            strokeThickness: 8,
+            strokeThickness: 0,
             align: 'center'
         }).setOrigin(0.5);
         
@@ -503,15 +503,15 @@ export class Level1 extends Phaser.Scene {
         });
 
         // 2. Show "SUPER!" or "GEWELDIG!" text
-        const praises = ['SUPER!', 'GEWELDIG!', 'FANTASTISCH!', 'TOP!', 'PERFECT!'];
+        const praises = ['SUPER!', 'GEWELDIG!', 'FANTASTISCH!', 'TOP!', 'PERFECT!', 'GOED ZO!'];
         const praise = Phaser.Math.RND.pick(praises);
         
         const praiseText = this.add.text(640, 200, praise, {
             fontSize: '72px',
-            color: '#ffff00',
+            color: '#6fdd86',
             fontStyle: 'bold',
             stroke: '#ff00ff',
-            strokeThickness: 6
+            strokeThickness: 0
         }).setOrigin(0.5);
         
         // Praise text bounces in
@@ -608,7 +608,7 @@ export class Level1 extends Phaser.Scene {
         this.tweens.add({
             targets: this.ship,
             x: 640 + 10,
-            duration: 50,
+            duration: 70,
             yoyo: true,
             repeat: 3,
             onComplete: () => {
@@ -616,12 +616,6 @@ export class Level1 extends Phaser.Scene {
             }
         });
         
-        // You can replace this with:
-        // - Asteroid appearing
-        // - Screen flash
-        // - Lives counter reduction
-        // - Explosion effect
-        // etc.
     }
 
     update() {

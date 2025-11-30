@@ -16,7 +16,7 @@ export class Start extends Phaser.Scene {
         this.load.image('background', 'assets/space.png');
         this.load.image('logo', 'assets/NEWTON.png');
         this.load.spritesheet('ship', 'assets/spaceship.png', { frameWidth: 176, frameHeight: 96 });
-        this.load.image('menuPanel', 'assets/BG button 2.jpeg');
+        this.load.image('menuPanel', 'assets/BG_button_2.jpeg');
     }
 
     create() {
