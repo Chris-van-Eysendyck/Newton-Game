@@ -24,6 +24,23 @@
 >   button fix (it was never destroyed).
 > - **Routing.** `Start.js` sets `registry.targetLevel` and goes through `HyperJump`; new scenes
 >   plug in there.
+>
+> **Decided by Chris, 13/09/2026: open points in §5**
+>
+> - **Session.** A session is a calendar day (local time). Two runs on one evening are one session.
+> - **Credits.** Strict: at most one promotion credit per fact per session for *both* steps, so
+>   `leren → vlot` and `vlot → beheerst` each take ≥ 3 session days. Only the first answer to a
+>   fact in a session can earn credit.
+> - **Calibration.** The first 7 session days are counted **per input mode**: typed (Reis) and MC
+>   (Warp) calibrate separately.
+> - **Interpretation, not yet confirmed.** The correct answer that moves a fact from `untested` to
+>   `leren` does not count toward the 3 needed for `vlot`.
+> - **Schema (§7) as built in `src/core/`.**
+>   - `latencies` is split per mode (`{ typed: [], mc: [] }`).
+>   - Facts also carry `slowStreak`.
+>   - `config.thresholds.{typed,mc}` holds `{ ms, source, samples, computedAt }` or `null`.
+>   - `config.calibrationDays.{typed,mc}` replaces `thresholdTypedMs` / `thresholdMcMs`.
+>   - `sessionsCredited` is capped at 10.
 
 ---
 

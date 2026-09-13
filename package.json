@@ -1,0 +1,10 @@
+{
+  "name": "newton-game",
+  "private": true,
+  "description": "Newton - educational maths game. No build step; this file only runs the core tests.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"tests/**/*.test.js\""
+  }
+}
