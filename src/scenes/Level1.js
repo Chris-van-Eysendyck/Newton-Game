@@ -127,10 +127,14 @@ export class Level1 extends Phaser.Scene {
             console.log('START button pressed');
             if (this.levelText) this.levelText.destroy();
             this.levelText = null;
-            if (this.startButton) this.startButton.destroy();
-            if (this.startButtonText) this.startButtonText.destroy();
-            this.startButton = null;
-            this.startButtonText = null;
+            if (this.startButton) {
+                this.startButton.destroy();
+                this.startButton = null;
+            }
+            if (this.startButtonText) {
+                this.startButtonText.destroy();
+                this.startButtonText = null;
+            }
             this.showMathProblem();
         });
         
@@ -145,8 +149,6 @@ export class Level1 extends Phaser.Scene {
         this.touchButtons = [];  // Touch number pad buttons
         this.submitButton = null;
         this.clearButton = null;
-        this.startButton = null;  // Intro screen start button
-        this.startButtonText = null;
         this.currentAnswer = null;
         this.score = 0;
         this.scoreText = null;
@@ -196,12 +198,14 @@ export class Level1 extends Phaser.Scene {
     setupKeyboardListeners() {
         // ENTER to start playing or submit answer
         this.input.keyboard.on('keydown-ENTER', () => {
-            if (this.levelText) {
+            if (this.levelText && this.startButton) {
                 console.log('ENTER pressed - starting game');
                 this.levelText.destroy();
                 this.levelText = null;
-                if (this.startButton) this.startButton.destroy();
-                if (this.startButtonText) this.startButtonText.destroy();
+                this.startButton.destroy();
+                this.startButton = null;
+                this.startButtonText.destroy();
+                this.startButtonText = null;
                 this.showMathProblem();
             } else if (this.mathProblemText && this.inputEnabled) {
                 this.submitAnswer();
@@ -393,11 +397,11 @@ export class Level1 extends Phaser.Scene {
             startY = height * 0.38;  // Start below the math panel
             cols = 5;
         } else {
-            // DESKTOP LAYOUT - right side
+            // DESKTOP LAYOUT - right side (with safe margin)
             buttonSize = Math.min(width / 12, height / 12, 60);
             fontSize = Math.min(18, buttonSize * 0.4);
             padding = buttonSize * 0.2;
-            startX = width * 0.65;
+            startX = width * 0.55;  // More to the left to prevent cutoff
             startY = height * 0.35;
             cols = 5;
         }
@@ -460,10 +464,10 @@ export class Level1 extends Phaser.Scene {
             submitHeight = buttonSize * 0.9;
             clearY = submitY;
         } else {
-            // DESKTOP: Action buttons to the right of number pad
-            submitX = startX + 5 * (buttonSize + padding) + buttonSize;
+            // DESKTOP: Action buttons to the right of number pad (with safe margin)
+            submitX = startX + 5 * (buttonSize + padding) + buttonSize * 0.5;
             submitY = startY;
-            submitWidth = buttonSize * 2;
+            submitWidth = buttonSize * 1.8;  // Slightly smaller to fit
             submitHeight = buttonSize;
             clearY = startY + buttonSize + padding;
         }
