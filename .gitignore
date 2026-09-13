@@ -1,0 +1,9 @@
+# IDE / editor
+.idea/
+phasereditor2d.config.json
+
+# Local archives
+*.zip
+
+# Node (tests only, no build)
+node_modules/

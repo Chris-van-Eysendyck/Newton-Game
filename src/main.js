@@ -7,9 +7,11 @@
 
 
 import { Start } from './scenes/Start.js';
-import { Game } from './scenes/GameScene1.js';
 import { HyperJump } from './scenes/HyperJump.js';   
 import { Level1 } from './scenes/Level1.js'; 
+import { Level2 } from './scenes/Level2.js';
+import { Level3 } from './scenes/Level3.js';
+import { Level4 } from './scenes/Level4.js';
 
 const config = {
     type: Phaser.AUTO,
@@ -33,9 +35,11 @@ const config = {
     // Scenes in correct order
     scene: [
         Start,       // Main menu
-        Game,        // Intro text scene
-        HyperJump,   // Lightspeed transition
-        Level1       // The actual game level
+        HyperJump,  // Lightspeed transition
+        Level1,    // The actual game level
+        Level2,   // Level2 obv
+        Level3,  // Level3 ...ad nauseam
+        Level4  // Level4 ...ad infinitum
     ]
 };
 
