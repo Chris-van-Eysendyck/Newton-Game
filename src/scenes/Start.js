@@ -93,6 +93,14 @@ export class Start extends Phaser.Scene {
                 description: 'Splitsen kan ik! (1-20)',
                 scene: 'Level4',
                 available: true
+            },
+            {
+                number: 5,
+                name: 'MAALTAFELS',
+                description: 'Nieuw: tafels oefenen',
+                scene: 'ProfilePicker',
+                direct: true,  // a menu, not a flight: skip HyperJump
+                available: true
             }
         ];
 
@@ -111,7 +119,9 @@ export class Start extends Phaser.Scene {
             const col = i % cols;
             const row = Math.floor(i / cols);
             
-            const xPos = isMobile ? centerX : (col === 0 ? width * 0.3 : width * 0.7);
+            // An odd last button sits alone on its row: centre it
+            const alone = col === 0 && i === levels.length - 1;
+            const xPos = isMobile || alone ? centerX : (col === 0 ? width * 0.3 : width * 0.7);
             const yPos = startY + row * spacingY;
             
             // Button background
@@ -145,7 +155,8 @@ export class Start extends Phaser.Scene {
                         duration: 100,
                         yoyo: true,
                         onComplete: () => {
-                            this.startLevel(level.scene);
+                            if (level.direct) this.scene.start(level.scene);
+                            else this.startLevel(level.scene);
                         }
                     });
                 });
@@ -214,6 +225,16 @@ export class Start extends Phaser.Scene {
         .on('pointerdown', () => {
             window.location.href = 'mailto:ravendatainsight@gmail.com?subject=Newton Game Feedback';
         });
+
+        // Parent screen: reachable from the start screen, deliberately not prominent
+        this.add.text(width - 20, height - 16, '⚙', {
+            fontSize: `${Math.min(34, width / 36)}px`,
+            fontFamily: 'Arial',
+            color: '#666666'
+        })
+        .setOrigin(1)
+        .setInteractive({ useHandCursor: true })
+        .on('pointerdown', () => this.scene.start('ParentConfig'));
 
         // Handle resize
         this.scale.on('resize', this.handleResize, this);

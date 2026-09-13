@@ -41,6 +41,15 @@
 >   - `config.thresholds.{typed,mc}` holds `{ ms, source, samples, computedAt }` or `null`.
 >   - `config.calibrationDays.{typed,mc}` replaces `thresholdTypedMs` / `thresholdMcMs`.
 >   - `sessionsCredited` is capped at 10.
+>
+> **Decided by Chris, 13/09/2026: Step 2 (§7, §9, §15)**
+>
+> - **Profile picker.** It appears only when a child enters the maaltafels, through the MAALTAFELS
+>   button on the start screen. Level 1–4 need no profile. The picker is skipped when there is
+>   exactly one profile.
+> - **Creating profiles.** Only on the parent screen; kids pick from existing names.
+> - **Parent screen.** Reached through a small ⚙ in the bottom-right corner of the start screen.
+>   It is an HTML overlay started by the `ParentConfig` scene, because it needs real form controls.
 
 ---
 

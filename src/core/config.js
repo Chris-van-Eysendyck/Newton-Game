@@ -56,3 +56,23 @@ export function unlockedFactIds(config) {
         .sort((a, b) => a - b)
         .flatMap(tableFactIds);
 }
+
+function assertTable(table) {
+    if (!Number.isInteger(table) || table < 1 || table > 10) throw new Error(`Invalid table: ${table}`);
+}
+
+/** Chris's switch on the parent screen. Returns a new config. */
+export function setTableUnlocked(config, table, unlocked) {
+    assertTable(table);
+    const tables = new Set(config.unlockedTables);
+    if (unlocked) tables.add(table);
+    else tables.delete(table);
+    return { ...config, unlockedTables: [...tables].sort((a, b) => a - b) };
+}
+
+/** Teachers reshuffle: the parent screen reassigns a planet's table. Returns a new config. */
+export function setPlanetTable(config, planetId, table) {
+    assertTable(table);
+    if (!PLANETS.some(planet => planet.id === planetId)) throw new Error(`Unknown planet: ${planetId}`);
+    return { ...config, tableForPlanet: { ...config.tableForPlanet, [planetId]: table } };
+}

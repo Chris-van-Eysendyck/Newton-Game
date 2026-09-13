@@ -16,10 +16,19 @@ A first maths & logic game for 5–7 year olds, or whoever wants to learn. Enjoy
 ## Run locally
 
 No build step: plain ES modules, with Phaser 3.80.1 loaded from the CDN. Serve the repo root
-with any static server and open http://localhost:8080:
+and open http://localhost:8080:
 
 ```bash
-python -m http.server 8080
+python tools/serve.py
+```
+
+It is `http.server` with caching turned off. The plain `python -m http.server` sends no cache
+headers, so browsers keep running stale scene files after an edit.
+
+Core engine tests (Node 20+, no dependencies):
+
+```bash
+npm test
 ```
 
 Opening `index.html` directly from disk will not work, because browsers block ES modules on `file://`.
