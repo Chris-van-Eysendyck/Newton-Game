@@ -27,7 +27,7 @@ export class ProfilePicker extends Phaser.Scene {
     /** @param {{ next?: string }} data  scene to fly to once a pilot is chosen */
     create(data) {
         const { width, height } = this.scale;
-        this.next = data?.next ?? null;
+        this.next = data?.next ?? 'ReisScene';
         this.choices = [];
 
         this.background = this.add.tileSprite(width / 2, height / 2, width, height, 'background');
@@ -85,17 +85,8 @@ export class ProfilePicker extends Phaser.Scene {
 
     choose(entry) {
         this.registry.set('activeProfile', entry.slug);
-
-        if (this.next) {
-            this.registry.set('targetLevel', this.next);
-            this.scene.start('HyperJump');
-            return;
-        }
-
-        // Nothing to fly to yet: De Reis hooks in here in step 3.
-        this.choices.forEach(item => item.destroy());
-        this.title.setText(`HALLO ${entry.name.toUpperCase()}!`);
-        this.message('De maaltafels komen er binnenkort aan.');
+        this.registry.set('targetLevel', this.next);
+        this.scene.start('HyperJump');
     }
 
     message(text) {

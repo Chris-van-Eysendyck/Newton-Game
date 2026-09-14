@@ -12,6 +12,7 @@ A first maths & logic game for 5–7 year olds, or whoever wants to learn. Enjoy
 | 2 | Plus en min (0–20) |
 | 3 | Splitsen (1–10) |
 | 4 | Splitsen (1–20) |
+| Maaltafels | De Reis: typed tafels practice with a mastery engine, per profile (in progress) |
 
 ## Run locally
 
@@ -38,7 +39,11 @@ Opening `index.html` directly from disk will not work, because browsers block ES
 ```
 index.html        entry point
 src/main.js       Phaser config and scene list
-src/scenes/       Start, HyperJump, Level1–4
+src/core/         maaltafels engine: pure JS, no Phaser, tested under node
+src/scenes/       Start, HyperJump, Level1–4, ProfilePicker, ParentConfig,
+                  BaseMathScene + ReisScene (maaltafels)
+tests/            node tests for src/core
+docs/             maaltafels design handover
 assets/           images
 project.config    Phaser Editor project file
 ```

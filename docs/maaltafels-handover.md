@@ -50,6 +50,21 @@
 > - **Creating profiles.** Only on the parent screen; kids pick from existing names.
 > - **Parent screen.** Reached through a small ⚙ in the bottom-right corner of the start screen.
 >   It is an HTML overlay started by the `ParentConfig` scene, because it needs real form controls.
+>
+> **Built in step 3, 14/09/2026: De Reis. These choices still need Chris's confirmation.**
+>
+> - **Rules live in `src/core/run.js`.** The file is tested under node. `BaseMathScene` only draws
+>   and collects input; `ReisScene` is the numpad over it.
+> - **Pool.** There is no map yet (step 4), so a leg draws from every unlocked table.
+> - **Leg length.** In-leg miss repeats count toward the 20. The end-of-leg repeats come after them.
+>   The 5-minute soft stop ends the main phase, and the end repeats still follow.
+> - **Leaving early.** Every answer is saved as soon as it is given. A leg abandoned after at least
+>   one answer (STOP, ESC or closing the tab) still logs a session and a calibration day. With no
+>   answers, nothing is logged.
+> - **Dock screen.** It shows the number correct for the leg and the best combo, with only a MENU
+>   button. There is no "nog een reis": a second leg the same evening earns no credit anyway.
+> - **Miss.** The full fact (`7 × 8 = 56`) stays on screen for 2.2 s with the child's answer
+>   underneath, and the shield flickers. There are no red flashes and no ship knock-back.
 
 ---
 

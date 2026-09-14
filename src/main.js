@@ -14,6 +14,7 @@ import { Level3 } from './scenes/Level3.js';
 import { Level4 } from './scenes/Level4.js';
 import { ProfilePicker } from './scenes/ProfilePicker.js';
 import { ParentConfig } from './scenes/ParentConfig.js';
+import { ReisScene } from './scenes/ReisScene.js';
 
 const config = {
     type: Phaser.AUTO,
@@ -43,7 +44,8 @@ const config = {
         Level3,  // Level3 ...ad nauseam
         Level4,  // Level4 ...ad infinitum
         ProfilePicker,  // Wie speelt er? (maaltafels)
-        ParentConfig    // Ouderscherm
+        ParentConfig,   // Ouderscherm
+        ReisScene       // De Reis (maaltafels, typed)
     ]
 };
 
