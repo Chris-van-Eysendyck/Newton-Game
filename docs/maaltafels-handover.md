@@ -51,7 +51,7 @@
 > - **Parent screen.** Reached through a small ⚙ in the bottom-right corner of the start screen.
 >   It is an HTML overlay started by the `ParentConfig` scene, because it needs real form controls.
 >
-> **Built in step 3, 14/09/2026: De Reis. These choices still need Chris's confirmation.**
+> **Built in step 3, 14/09/2026: De Reis. Confirmed by Chris the same day.**
 >
 > - **Rules live in `src/core/run.js`.** The file is tested under node. `BaseMathScene` only draws
 >   and collects input; `ReisScene` is the numpad over it.
